@@ -27,3 +27,81 @@
 
 
 
+#include "CurrentTime.h"
+#include "IntToString.h"
+
+
+/**
+ * @brief  GetCurrentTime Get the local curretn time in string
+ * @return The string which represent the loacl current time
+ * @author sheng
+ * @date   2014-08-21
+ * @version 0.1
+ *
+ * @history
+ *     <author>       <date>         <version>        <description>
+ *      sheng       2014-08-21          0.1         build the function
+ *
+ */
+std::string GetCurrentTime()
+{
+    // get the seconds since 00:00 hours, Jan 1, 1970 UTC
+    time_t Time = time(NULL);
+
+
+    // convert the Time to the local time
+    tm* LocalTime = localtime(&Time);
+
+
+    // convert the loacl time to a string
+    std::string CurrentInString = ConvertTimeToString(LocalTime);
+
+
+    return CurrentInString;
+}
+
+
+
+
+/**
+ * @brief ConvertTimeToString Convert the local current time to a string
+ * @param Time The local current time
+ * @return A string which represents the local current time
+ *
+ * @author sheng
+ * @date   2014-08-21
+ * @version 0.1
+ *
+ * @history
+ *     <author>       <date>         <version>        <description>
+ *      sheng       2014-08-21          0.1         build the function
+ *
+ *
+ */
+std::string ConvertTimeToString(tm* Time)
+{
+    std::string Result;
+
+    if (Time)
+    {
+        // add the year
+        Result += IntToString(Time->tm_year + 1900) + "-";
+
+        // add the month
+        Result += IntToString(Time->tm_mon + 1) + "-";
+
+        // add the day
+        Result += IntToString(Time->tm_mday) + "_";
+
+        // add the hour
+        Result += IntToString(Time->tm_hour) + "-";
+
+        // add the minutes
+        Result += IntToString(Time->tm_min) + "-";
+
+        // add the seconds
+        Result += IntToString(Time->tm_sec) + ".log";
+    }
+
+    return Result;
+}

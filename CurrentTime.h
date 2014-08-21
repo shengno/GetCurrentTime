@@ -29,4 +29,12 @@
 #ifndef CURRENTTIME_H
 #define CURRENTTIME_H
 
+#include <time.h>
+#include <string>
+
+std::string GetCurrentTime();
+
+std::string ConvertTimeToString(tm* Time);
+
+
 #endif // CURRENTTIME_H
