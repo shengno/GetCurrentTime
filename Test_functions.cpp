@@ -27,17 +27,45 @@
 
 
 
+#include "CurrentTime.h"
+#include <iostream>
 /**
- * @brief
- * @return
+ * @brief Test_GetCurrentTime Test the GetCurrentTime function.
+ *
  * @author sheng
- * @date
+ * @date 2014-08-21
  * @version 0.1
  *
  * @history
  *     <author>       <date>         <version>        <description>
- *      sheng                 0.1
+ *      sheng        2014-08-21         0.1         build the function
  *
  */
+void Test_GetCurrentTime()
+{
+   std::cout << "The current time is " << GetCurrentTime() << std::endl;
+}
 
 
+
+
+/**
+ * @brief Test_ConvertTimeToString Test the ConvertTimeToString function.
+ *
+ * @author sheng
+ * @date 2014-08-21
+ * @version 0.1
+ *
+ * @history
+ *     <author>       <date>         <version>        <description>
+ *      sheng        2014-08-21         0.1         build the function
+ *
+ */
+void Test_ConvertTimeToString()
+{
+    std::cout << "The null tm is " << ConvertTimeToString(NULL) << std::endl;
+
+    tm Time;
+    std::cout << "The Time is " << ConvertTimeToString(&Time) << std::endl;
+
+}
